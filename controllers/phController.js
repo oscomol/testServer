@@ -64,8 +64,7 @@ const deletePh = async (req, res) => {
   try {
     const { IDs } = req.query;
 
-    if (!Array.isArray(IDs) || !IDs?.length)
-      return res.status(400).json({ msg: 'Some fields are missing' });
+    if (!Array.isArray(IDs) || !IDs?.length)  return res.status(400).json({ msg: 'Some fields are missing' });
 
     if (IDs[0] === 'all') {
       const sql = 'DELETE FROM tbl_ph';

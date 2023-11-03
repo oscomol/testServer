@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const socketController = require("./controllers/socketController");
 const http = require('http');
 const PORT = process.env.port || 3600
-const dbconn = require("./config/dbconn");
 const { Server } = require("socket.io");
 const { savePh } = require("./controllers/phController")
 const pushNotification = require("./controllers/pushNotification")
@@ -35,19 +34,10 @@ socketController(io)
 app.use('/ph', require('./route/phRoute'));
 app.use('/token', require('./route/tokenRoute'));
 
-dbconn.connect((err) => {
-  if(err){
-    console.log("SERVER ERROR!!!!!!")
-    console.log(err)
-    throw err;
-  }
-  console.log("Connected to database");
-})
-
 app.post('/test', (req, res) => {
   const message = req.body;
   const phData = Number(message);
-  
+  console.log("Hey");
   if(phData){
     pushNotification(phData);
     const phId = uuidv4();
@@ -64,7 +54,7 @@ app.post('/test', (req, res) => {
 
 app.use(errorHandler);
 
-server.listen(PORT, "192.168.254.152", () => {
+server.listen(PORT, () => {
   console.log(`Node.js server listening at port ${PORT}`);
-  console.log("Testing .....");
+  
 });
