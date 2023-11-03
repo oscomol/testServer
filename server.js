@@ -55,6 +55,6 @@ app.post('/test', (req, res) => {
 app.use(errorHandler);
 
 server.listen(PORT, () => {
-  console.log(`Node.js server listening at port ${PORT}`);
+  console.log(`Server running`);
   
 });
