@@ -37,7 +37,6 @@ app.use('/token', require('./route/tokenRoute'));
 app.post('/test', (req, res) => {
   const message = req.body;
   const phData = Number(message);
-  console.log("Hey");
   if(phData){
     pushNotification(phData);
     const phId = uuidv4();
