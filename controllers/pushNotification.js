@@ -17,9 +17,9 @@ const pushNotification = (ph) => {
         messages.push({
           to: pushToken,
           playSound: 'default',
-          title: 'A new change to PH level is detected',
-          body: `The current PH level is ${ph}`,
-          data: { withSome: 'data' },
+          title: 'A new change in pH level has been detected',
+          body: `Current pH level: ${ph}`,
+          data: {},
         });
       }
 
